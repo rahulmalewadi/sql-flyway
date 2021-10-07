@@ -25,8 +25,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses:  rahulmalewadi/flyway-custom-action@v1.0.0
+
         with:
           url: jdbc:postgresql://mydb1.cbidfqjsoekh.us-east-1.rds.amazonaws.com:5432/flywaydb
           user: postgres
           password: 123456789
-      - run: echo 'testing'
+
