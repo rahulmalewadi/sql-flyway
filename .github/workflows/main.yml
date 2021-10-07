@@ -30,4 +30,5 @@ jobs:
           url: jdbc:postgresql://mydb1.cbidfqjsoekh.us-east-1.rds.amazonaws.com:5432/flywaydb
           user: postgres
           password: 123456789
+          locations: ./sql
 
