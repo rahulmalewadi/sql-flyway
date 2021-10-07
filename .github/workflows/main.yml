@@ -1,0 +1,32 @@
+name: Main
+on:
+  
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: Branch name
+        required: true
+        default: dev
+      deploy_message:
+        description: Deploy Description
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql
+        env:
+          POSTGRES_PASSWORD: mysql
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v2
+      - uses: joshuaavalon/flyway-action@v1
+        with:
+          url: jdbc:mysql://database-1.cbidfqjsoekh.us-east-1.rds.amazonaws.com:3306/database-1
+          user: ${{secrets.user}}
+          password: ${{secrets.password}}
+      - run: echo 'testing'
