@@ -16,7 +16,7 @@ jobs:
       mysql:
         image: mysql
         env:
-          POSTGRES_PASSWORD: mysql
+          MYSQL_PASSWORD: mysql
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -24,9 +24,9 @@ jobs:
           --health-retries 5
     steps:
       - uses: actions/checkout@v2
-      - uses: joshuaavalon/flyway-action@v1
+      - uses:  rahulmalewadi/flyway-custom-action@v1.0.0
         with:
-          url: jdbc:mysql://database-1.cbidfqjsoekh.us-east-1.rds.amazonaws.com:3306/database-1
-          user: ${{secrets.user}}
-          password: ${{secrets.password}}
+          url: jdbc:mysql://mydb1.cbidfqjsoekh.us-east-1.rds.amazonaws.com:3306/data1
+          user: admin
+          password: 123456789
       - run: echo 'testing'
