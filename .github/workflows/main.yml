@@ -13,10 +13,10 @@ jobs:
   test:
     runs-on: ubuntu-latest
     services:
-      mysql:
-        image: mysql
+      postgres:
+        image: postgres
         env:
-          MYSQL_PASSWORD: mysql
+          POSTGRES_PASSWORD: postgres
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
