@@ -19,7 +19,7 @@ jobs:
           POSTGRES_PASSWORD: postgres
         options: >-
           --health-cmd pg_isready
-          --health-interval 10s
+          --health-interval 8s
           --health-timeout 5s
           --health-retries 5
     steps:
@@ -27,8 +27,9 @@ jobs:
       - uses:  rahulmalewadi/flyway-custom-action@v1.0.0
 
         with:
-          url: jdbc:postgresql://mydb1.cbidfqjsoekh.us-east-1.rds.amazonaws.com:5432/flywaydb
-          user: postgres
-          password: 123456789
+          url: ${{secrets.URL}}
+          user: ${{secrets.USERNAME}}
+          
+          password: ${{secrets.PASSWORD}}
           locations: filesystem:./sql
 
