@@ -23,4 +23,22 @@ jobs:
           
           password: ${{secrets.PASSWORD}}
           locations: filesystem:./sql
+        
+        
+  elastic:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: build
+        run: this-will-fail
+      - name: elastic-logs
+        if: failure()
+        uses: masci/elastic-logs@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          cloud-id: ${{ secrets.CLOUD_ID }}
+          username: ${{ secrets.ES_USER }}
+          password: nSjuaMdIJCQEuV4F8J40F1pl
+          job-names: build
 
