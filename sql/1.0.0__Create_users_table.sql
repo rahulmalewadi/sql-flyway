@@ -1,9 +1,10 @@
-CREATE TABLE employees (
-   employee_id   NUMERIC       NOT NULL,
-   first_name    VARCHAR(1000) NOT NULL,
-   last_name     VARCHAR(1000) NOT NULL,
-   date_of_birth DATE                  ,
-   phone_number  VARCHAR(1000) NOT NULL,
-   junk          CHAR(1000)            ,
-   CONSTRAINT employees_pk PRIMARY KEY (employee_id)
-);
+CREATE TABLE IF NOT EXISTS tasks (
+    task_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    start_date DATE,
+    due_date DATE,
+    status TINYINT NOT NULL,
+    priority TINYINT NOT NULL,
+    description TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)  ENGINE=INNODB;
